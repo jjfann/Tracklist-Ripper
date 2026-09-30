@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tracklist Ripper · Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <span class="vinyl slow" aria-hidden="true"><span class="disc"><span class="label"></span></span><span class="sheen"></span></span>
+        <div>
+          <h1>Tracklist <em>Ripper</em></h1>
+          <p class="muted">Dig the tracklist out of a YouTube mix and press it into a Spotify playlist.</p>
+        </div>
+      </header>
+
+      <section class="card" aria-labelledby="spotify-h">
+        <div class="card-head">
+          <h2 id="spotify-h">1 · Connect Spotify</h2>
+          <span class="status" id="conn-status"></span>
+        </div>
+        <p class="muted">
+          Spotify requires every tool like this to run through its own developer app. You make one for yourself, and it's free and
+          takes a couple of minutes. <strong>Spotify only lets development apps work when the app owner has Premium.</strong>
+        </p>
+        <ol class="steps">
+          <li>
+            Open the <a href="https://developer.spotify.com/dashboard" target="_blank" rel="noopener">Spotify developer dashboard</a>
+            and choose <b>Create app</b>. Any name and description will do.
+          </li>
+          <li>
+            Add this <b>Redirect URI</b> exactly:
+            <div class="copy-row">
+              <code id="redirect-uri"></code>
+              <button class="btn ghost small" id="copy-redirect" type="button">Copy</button>
+            </div>
+          </li>
+          <li>Under <b>Which API/SDKs are you planning to use?</b> tick <b>Web API</b>, then save.</li>
+          <li>Open the app's <b>Settings</b>, copy the <b>Client ID</b>, and paste it here:</li>
+        </ol>
+        <div class="copy-row">
+          <input type="text" id="client-id" placeholder="Client ID" autocomplete="off" spellcheck="false" aria-label="Spotify Client ID" />
+          <button class="btn" id="save-client" type="button">Save</button>
+        </div>
+        <div class="copy-row">
+          <button class="btn" id="connect" type="button">Connect Spotify</button>
+          <button class="btn ghost" id="disconnect" type="button" hidden>Disconnect</button>
+        </div>
+        <p class="msg" id="spotify-msg" role="status"></p>
+      </section>
+
+      <section class="card" aria-labelledby="ai-h">
+        <div class="card-head">
+          <h2 id="ai-h">2 · On-device AI <span class="tag">optional</span></h2>
+          <span class="status" id="nano-status"></span>
+        </div>
+        <p class="muted">
+          If your Chrome has <b>Gemini Nano</b>, it reads the messy lines, like ones with no dash or with the title before the artist.
+          It runs entirely on your computer and is free. Without it, the built-in parser does the job.
+        </p>
+        <p class="muted" id="nano-detail"></p>
+        <div class="copy-row">
+          <button class="btn" id="nano-download" type="button" hidden>Download model</button>
+          <div class="meter" id="nano-meter" hidden><div></div></div>
+        </div>
+        <label class="check"><input type="checkbox" id="use-nano" /> Use on-device AI when it's available</label>
+      </section>
+
+      <section class="card" aria-labelledby="defaults-h">
+        <h2 id="defaults-h">3 · Defaults</h2>
+        <label class="check"><input type="checkbox" id="default-public" /> Make new playlists public</label>
+        <label class="check"><input type="checkbox" id="skip-existing" /> When adding to an existing playlist, skip songs already in it</label>
+      </section>
+
+      <section class="card" aria-labelledby="demo-h">
+        <h2 id="demo-h">4 · Demo mode</h2>
+        <p class="muted">
+          Try everything without a Spotify connection. The YouTube buttons, tracklist reading and on-device AI are all real,
+          but a pretend Spotify "finds" whatever was read, and nothing is sent anywhere. It's handy for checking how well a
+          tracklist parses. Real matching quality needs the real Spotify.
+        </p>
+        <label class="check"><input type="checkbox" id="demo-mode" /> Use demo mode (fake Spotify)</label>
+      </section>
+
+      <p class="muted foot">Your Spotify tokens stay in this browser. Tracklists are only sent to Spotify's search.</p>
+    </main>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

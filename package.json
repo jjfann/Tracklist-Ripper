@@ -1,0 +1,11 @@
+{
+  "name": "tracklist-ripper",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Chrome extension: rip YouTube mix tracklists into Spotify playlists.",
+  "scripts": {
+    "test": "node --test test/",
+    "icons": "node scripts/make-icons.mjs"
+  }
+}

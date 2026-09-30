@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "Tracklist Ripper",
+  "version": "0.1.0",
+  "description": "Dig the tracklist out of a YouTube mix and press it into a Spotify playlist.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl1DfFuWZcYkU52I+3cuGoo5vtrQEkqL/Tp7QwoQV8iJNTrsk8dz8sDQ0ASNLKpQpbtw/6pbNtqy2YD5+hq4BKDyfpL3bTBK6qSbZ1MUuW4gL3Ort/ZGQpeb0UOhgFcgP9qacWOVnRaUyOS617rivN1ObkbP49FbWPZRzlYe/9+7uTzdLODlnMJctIBJ4EiLTWyiNmssban3cJhASh+Ct4cDItS5M2hfgZ42s6O+rsRSbKVUF7S8zmfWs6M98jVEtAdz24foYJLN1zoDDUg2P7X4LM+EG5jVAUadVfamyI4Y920ZGVLS0fMCBXNoBsr+NISPBeuPQss4AWtqF/j72wQIDAQAB",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "identity",
+    "storage",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://i.ytimg.com/*",
+    "https://api.spotify.com/*",
+    "https://accounts.spotify.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "src/sidepanel/index.html"
+  },
+  "options_page": "src/options/options.html",
+  "action": {
+    "default_title": "Tracklist Ripper",
+    "default_icon": {
+      "16": "assets/icons/icon-16.png",
+      "32": "assets/icons/icon-32.png",
+      "48": "assets/icons/icon-48.png",
+      "128": "assets/icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "32": "assets/icons/icon-32.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "src/content/youtube.js"
+      ],
+      "css": [
+        "src/content/youtube.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

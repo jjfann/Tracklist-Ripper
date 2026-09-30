@@ -1,0 +1,324 @@
+/* Tracklist Ripper theme: rosewood & cream, vinyl everything. */
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../../assets/fonts/fraunces.woff2') format('woff2');
+  font-weight: 400 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../../assets/fonts/dm-sans.woff2') format('woff2');
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+:root {
+  /* palette */
+  --rosewood: #8c3040;
+  --rosewood-deep: #5e1f2b;
+  --rosewood-soft: #b8606e;
+  --ink: #2e0f16;
+  --ink-soft: #6b4a50;
+  --cream: #fbf4e4;
+  --parchment: #efe3c8;
+  --parchment-deep: #e3d2ae;
+  --butter: #f2d98c;
+  --butter-deep: #d9b85c;
+  --vinyl: #1b1416;
+  --groove: #2e2226;
+
+  /* roles */
+  --bg: var(--cream);
+  --surface: var(--parchment);
+  --surface-2: #f6ecd6;
+  --line: #dcc9a6;
+  --text: var(--ink);
+  --muted: var(--ink-soft);
+  --accent: var(--rosewood);
+  --accent-hover: var(--rosewood-deep);
+  --on-accent: var(--butter);
+  --ok: #4f6b3a;
+  --warn: #9a6a12;
+  --shadow: 0 1px 0 rgba(46, 15, 22, 0.06), 0 6px 18px -8px rgba(46, 15, 22, 0.28);
+
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-body: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
+  --radius: 12px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c0c11;
+    --surface: #2a141a;
+    --surface-2: #331920;
+    --line: #4a2a31;
+    --text: #f6ebd3;
+    --muted: #c9ae9f;
+    --accent: #8c3040;
+    --accent-hover: #a33b4d;
+    --ok: #a9c38b;
+    --warn: #e8c46a;
+    --shadow: 0 1px 0 rgba(0, 0, 0, 0.3), 0 8px 22px -10px rgba(0, 0, 0, 0.7);
+    color-scheme: dark;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.45 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  margin: 0;
+  line-height: 1.15;
+}
+a {
+  color: var(--accent);
+}
+@media (prefers-color-scheme: dark) {
+  a {
+    color: var(--butter);
+  }
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+:focus-visible {
+  outline: 2px solid var(--butter-deep);
+  outline-offset: 2px;
+}
+
+/* ---- buttons ---------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+.btn:hover {
+  background: var(--accent-hover);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn.big {
+  min-height: 48px;
+  font-size: 16px;
+  padding: 0 22px;
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line);
+}
+.btn.ghost:hover {
+  background: var(--surface);
+}
+.btn.small {
+  min-height: 30px;
+  padding: 0 12px;
+  font-size: 13px;
+}
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.icon-btn:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* ---- form bits -------------------------------------------------------- */
+.field {
+  display: grid;
+  gap: 6px;
+}
+.field label,
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+input[type='text'],
+input[type='search'],
+select,
+textarea {
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+}
+textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+  font-size: 13px;
+}
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.check input {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+}
+
+.segmented {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.segmented button {
+  border: 0;
+  background: transparent;
+  border-radius: 999px;
+  min-height: 32px;
+  padding: 0 10px;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--muted);
+  cursor: pointer;
+}
+.segmented button[aria-pressed='true'] {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* ---- the record ------------------------------------------------------- */
+.vinyl {
+  display: block;
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.55);
+  flex: none;
+}
+.vinyl .disc {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 0 31%, rgba(255, 255, 255, 0.05) 31.5% 32.5%, transparent 33% 94%, rgba(255, 255, 255, 0.07) 95% 96%, transparent 96.5%),
+    repeating-radial-gradient(circle, var(--vinyl) 0 1.6px, var(--groove) 1.6px 2.6px);
+}
+.vinyl .label {
+  position: absolute;
+  inset: 33%;
+  border-radius: 50%;
+  background: var(--rosewood);
+  box-shadow: inset 0 0 0 3px rgba(242, 217, 140, 0.35);
+  overflow: hidden;
+}
+.vinyl .label::before {
+  /* printed mark so you can see it spin */
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 12%;
+  width: 22%;
+  height: 8%;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  background: var(--butter);
+  opacity: 0.85;
+}
+.vinyl .label::after {
+  content: '';
+  position: absolute;
+  inset: 45%;
+  border-radius: 50%;
+  background: var(--bg);
+}
+.vinyl .label:has(img)::before {
+  display: none;
+}
+.vinyl .label img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.vinyl .sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background: conic-gradient(from 20deg, transparent 0 8%, rgba(255, 255, 255, 0.1) 12%, transparent 17% 57%, rgba(255, 255, 255, 0.07) 62%, transparent 67%);
+  mask: radial-gradient(circle, transparent 33%, #000 33.5%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .vinyl.spinning .disc {
+    animation: spin 1.8s linear infinite;
+  }
+  .vinyl.slow .disc {
+    animation: spin 5s linear infinite;
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

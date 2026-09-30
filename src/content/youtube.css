@@ -1,0 +1,68 @@
+#pr-desc-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 0;
+  font-family: Roboto, Arial, sans-serif;
+}
+#pr-desc-bar .pr-note {
+  font-size: 12px;
+  color: var(--yt-spec-text-secondary, #606060);
+}
+
+.pr-rip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 16px 0 6px;
+  border: 0;
+  border-radius: 18px;
+  background: #8c3040;
+  color: #f2d98c;
+  font: 500 14px/1 Roboto, Arial, sans-serif;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.pr-rip-btn:hover {
+  background: #5e1f2b;
+}
+.pr-rip-btn:focus-visible {
+  outline: 2px solid #f2d98c;
+  outline-offset: 2px;
+}
+.pr-rip-btn.pr-in-comment {
+  height: 30px;
+  margin: 8px 0 4px;
+  font-size: 13px;
+  padding-right: 13px;
+}
+
+.pr-disc {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex: none;
+  background:
+    radial-gradient(circle, #fbf4e4 0 1.5px, #f2d98c 2px 4px, #8c3040 4.5px 7px, transparent 7.5px),
+    repeating-radial-gradient(circle, #1b1416 0 1.2px, #34262b 1.2px 2px);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+.pr-in-comment .pr-disc {
+  width: 20px;
+  height: 20px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pr-rip-btn:hover .pr-disc {
+    animation: pr-spin 1.8s linear infinite;
+  }
+  .pr-rip-btn.pr-spin .pr-disc {
+    animation: pr-spin 0.6s cubic-bezier(0.3, 0.1, 0.3, 1) 2;
+  }
+}
+@keyframes pr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
